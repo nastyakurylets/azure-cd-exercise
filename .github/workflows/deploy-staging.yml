@@ -5,7 +5,7 @@ on:
 env:
   IMAGE_REGISTRY_URL: ghcr.io
   DOCKER_IMAGE_NAME: nastyakurylets-azure-ttt
-  AZURE_WEBAPP_NAME: my-app-ucu # Твоя назва з Azure
+  AZURE_WEBAPP_NAME: my-app-ucu
 jobs:
   build:
     if: contains(github.event.pull_request.labels.*.name, 'stage')
@@ -41,7 +41,7 @@ jobs:
         with:
           registry: ${{ env.IMAGE_REGISTRY_URL }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }} # Використовуємо вбудований токен
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5
