@@ -1,0 +1,14 @@
+name: Stage the app
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'stage')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run a one-line script
+        run: echo "The stage label is present, starting build..."
